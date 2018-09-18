@@ -1,0 +1,132 @@
+\documentclass[
+    %Tamanho da fonte do documento
+    12pt, 
+    %Capítulos começam em página ímpar (insere uma página caso necessário)
+    openright,
+    %Impressão em frente e verso - oposto de oneside
+    twoside, 
+    %tamanho da página
+    a4paper, 
+    %Configurações opcionais
+    %Altera para maiúscula as fontes dos capítulos
+    chapter = TITLE, 
+    %Altera para maiúscula as fontes das seções
+    section = TITLE, 
+    %Altera para maiúscula as fontes das subseções
+    subsection = TITLE, 
+    %Altera para maiúscula as fontes das sub-subseções
+    subsubsection = TITLE,  
+    %Idiomas para hifenização
+    engish,
+    brazil %Último idioma é a língua do documento
+]{abntex2}
+
+
+%Pacotes utilizados em citações
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na referência
+\usepackage[alf]{abntex2cite}	                 % Citações padrão ABNT
+
+%Inclusão de pacotes básicos
+\usepackage{lmodern}        %Utiliza a fonte Lmodern no documento
+\usepackage[T1]{fontenc}	% Seleção de códigos de fonte
+\usepackage{lastpage}		% Usado pela Ficha catalográfica
+\usepackage{indentfirst}	% Indenta o primeiro parágrafo de cada seção
+\usepackage{color}			% Controle das cores
+\usepackage{graphicx}		% Inclusão de gráficos
+\usepackage{microtype} 		% para melhorias de justificação
+\usepackage{enumitem}       %alíneas
+\usepackage[utf8]{inputenc} %Codificação do documento UTF8 permite a utilização de acentos
+
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~} % Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 % Caso adicione alguma bibliografia sem citação
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}
+
+%Informações do documento
+
+\titulo{Ferramenta computacional para aproximação dinâmica da equação de chuva intensa por meio de inteligência artificial}
+\autor{Erick Hardt \\ Fernando Longuini da Silva \\ João Pedro Lang Ramalho}
+\local{Brasil}
+\data{2018}
+\orientador{Pedro Henrique Cerento de Lyra}
+\coorientador{Carlos Alberto de Moya Figueira Netto}
+
+\definecolor{blue}{RGB}{41,5,195} %Define a cor azul do texto
+
+\preambulo{Trabalho acadêmico sobre chuvas.}
+
+%Configurações de links do documento
+\makeatletter %Permite a utilização do @ como macros
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={IA}{chuva}{equação}, %Palavras chave do TCC
+		colorlinks=true,       		      % Links coloridos
+    	linkcolor=blue,          	      % Links na cor azul (definido na linha 55)
+    	citecolor=blue,        		      % Citações na cor azul
+    	filecolor=magenta,                % color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+
+\makeatother
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%Compila o sumário
+\makeindex
+
+\begin{document}
+
+%Configurações gerais
+\selectlanguage{brazil} %Seleciona o idioma do documento
+\frenchspacing % Retira espaço extra obsoleto entre as frases.
+
+%Elementos pré-textuais do TCC
+\input{Pre-Textuais/Capa.tex} %Inclui a capa do trabalho
+\input{Pre-Textuais/Folha-de-Rosto.tex} %Inclui a folha de rosto
+\input{Pre-Textuais/Ficha-Catalografica.tex} %Inclui ficha catalográfica
+%\input{Pre-Textuais/Errata.tex} %Insere errata
+\input{Pre-Textuais/Folha-de-Aprovacao.tex} %Folha de aprovação
+\input{Pre-Textuais/Dedicatoria.tex} %Dedicatória
+\input{Pre-Textuais/Agradecimentos.tex} %Inclui agradecimentos
+\input{Pre-Textuais/Epigrafe.tex} %Inclui a epígrafe
+\input{Pre-Textuais/Resumos.tex} %Insere os resumos
+\input{Pre-Textuais/Lista-Ilustracoes.tex} %ilustrações
+\input{Pre-Textuais/Lista-Tabelas.tex} %lista de tabelas
+\input{Pre-Textuais/Abreviaturas.tex} %insere lista de abreviaturas
+\input{Pre-Textuais/Simbolos.tex} %Lista de símbolos
+\input{Pre-Textuais/Sumario.tex} %Insere o sumário
+
+%Elementos textuais
+\input{Textuais/Introducao.tex}
+\input{Textuais/Objetivos.tex}
+\input{Textuais/Pesquisa-Referencias.tex}
+\input{Textuais/Metodologia.tex}
+\input{Textuais/Resultados-Discussoes.tex}
+\input{Textuais/Conclusao.tex}
+
+%Elementos pós-textuais
+\input{Pos-Textual/Bibliografia.tex}
+%\input{Pos-Textual/Glossario.tex}
+%\input{Pos-Textual/Apendice.tex}
+%\input{Pos-Textual/Anexo.tex}
+%\input{Pos-Textual/Indice-Remissivo.tex}
+
+\end{document}
