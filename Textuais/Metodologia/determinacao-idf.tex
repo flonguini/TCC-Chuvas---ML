@@ -1,8 +1,8 @@
 \section{Determinação da equação IDF}
 
-De acordo com (VILLELA e MATOS, 1975), deve-se analisar as relações entre intensidade-duração-frequência das chuvas, determinando para diferentes intervalos de duração, qual o tipo de equação e o número de parâmetros que melhor representam a região. A equação escolhida para esse projeto será a equação geral, devido a adoção por diversos autores.
+De acordo com \citeonline{hidro-aplicada}, deve-se analisar as relações entre intensidade-duração-frequência das chuvas, determinando para diferentes intervalos de duração, qual o tipo de equação e o número de parâmetros que melhor representam a região. A equação escolhida para esse projeto será a equação geral, devido a adoção por diversos autores.
 
-Para obter as séries históricas de máximas precipitações, verificou-se, para a PCD escolhida, a máxima precipitação anual para cada intervalo de duração. A duração de 5 minutos, adotou-se, conforme (RAMOS, 2010), a intensidade mínima de 8 milímetros.
+Para obter as séries históricas de máximas precipitações, verificou-se, para a PCD escolhida, a máxima precipitação anual para cada intervalo de duração. A duração de 5 minutos, adotou-se, conforme \cite{mudancas-climaticas}, a intensidade mínima de 8 milímetros.
 
 Após a determinação das máximas precipitações anuais, será encontrada a melhor distribuição empírica de probabilidade que se ajuda aos dados.
 Para realizar a extrapolação dos dados será utilizada a distribuição estatística para valores máximos extremos de Gumbel.
@@ -14,6 +14,11 @@ Será realizado um teste estatístico para validar se a distribuição adotada r
 \subsection{Obtenção dos parâmetros da equação IDF}
 
 Para calcular os coeficientes k, a, b e c da Equação 1, é necessário estimar o valor do parâmetro b, pois a partir de um grupo de valores, são adotados metodologias para estimar os demais parâmetros. Brater (1964) sugere que sejam arbitrados valores de b até que, os pontos plotados graficamente, tornem-se uma reta. Utilizando um gráfico bi logaritmo adota-se o eixo X sendo as durações e o eixo Y as intensidades calculadas pela distribuição de Gumbel.
-Aplicando-se a função log10(x) na Equação 1, obtém-se a Equação 31.
+Aplicando-se a função log10(x) na Equação \ref{eq:equacao-geral}, obtém-se a Equação \ref{eq:eqcomlog}.
+
+\begin{equation}
+\label{eq:eqcomlog}
+    log(i) = log(K) + a \times T_r + c \times log(t+b)
+\end{equation}
 
 Dessa forma, é possível ajustar, pelo método da regressão linear múltipla, os demais parâmetros da equação.

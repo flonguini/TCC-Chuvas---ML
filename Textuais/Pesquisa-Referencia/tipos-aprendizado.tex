@@ -1,68 +1,120 @@
 \section{Tipos de aprendizado}
 
-O aprendizado depende da interação entre o ambiente e aprendiz. A primeira diferença consiste no aprendizado supervisionado e não supervisionado (SHWARTZ e DAVID, 2014).
+O aprendizado depende da interação entre o ambiente e aprendiz. A primeira diferença consiste no aprendizado supervisionado e não supervisionado \cite{uml}.
 
 \subsection{Aprendizado supervisionado}
 
-O aprendizado supervisionado é aquele cujos parâmetros são pré-definidos e o algoritmo procura um padrão entre os dados. As informações que serão utilizadas para treinamento já contêm informações suficientes que permitem o algoritmo inferir uma relação entre uma ou múltiplas variáveis (COLINS, 2017). A Figura 3 representa um exemplo de aprendizado supervisionado, a regressão linear.
+O aprendizado supervisionado é aquele cujos parâmetros são pré-definidos e o algoritmo procura um padrão entre os dados. As informações que serão utilizadas para treinamento já contêm informações suficientes que permitem o algoritmo inferir uma relação entre uma ou múltiplas variáveis \cite{learning-algorithms}. A Figura \ref{fig:reg-linear} representa um exemplo de aprendizado supervisionado, a regressão linear.
+
+\begin{figure}[h]
+    \caption{Regressão linear é um exemplo de aprendizado supervisionado}
+    \centering
+    \includegraphics[width=0.5\textwidth]{Textuais/Figuras/linear-ml.png}
+    \fonte{Adaptado de Russell e Norving (2010)}
+    \label{fig:reg-linear}
+\end{figure}
 
 \subsection{Aprendizado não-supervisionado}
 
-O aprendizado não supervisionado, permite abordar problemas com pouca ou nenhuma ideia de como deverá ser o resultado (RUSSELL e NORVING, 2010). A rede tem de descobrir relações, padrões, regularidades ou categorias nos dados que lhe vão sendo apresentados e codificá-las em saídas. A Figura 4 exemplifica o aprendizado não supervisionado: a classificação de dados em dois grupos.
+O aprendizado não supervisionado, permite abordar problemas com pouca ou nenhuma ideia de como deverá ser o resultado \cite{ai}. A rede tem de descobrir relações, padrões, regularidades ou categorias nos dados que lhe vão sendo apresentados e codificá-las em saídas. A Figura \ref{fig:nao-supervisionado} exemplifica o aprendizado não supervisionado: a classificação de dados em dois grupos.
+
+\begin{figure}[h]
+    \caption{(a) Distribuição da altura e peso de algumas pessoas. (b) Possível agrupamento de dados em 2 grupos}
+    \centering
+    \includegraphics[width=1.0\textwidth]{Textuais/Figuras/nao-supervisionado.png}
+    \fonte{Adaptado de Murphy (2012)}
+    \label{fig:nao-supervisionado}
+\end{figure}
 
 \subsection{Benefícios das RNA}
 
-O poder de abstração das RNA deve-se à sua estrutura paralela e à capacidade de aprendizagem (SIMON, 2013). A estrutura paralela resulta da existência de muitos neurônios ligados em uma mesma estrutura de pesos de conexão com facilidade de adaptação a distintos tipos entrada de dados. A estrutura paralela é desejável uma vez que permite a tolerância à falha, pois se algum neurônio falhar, os efeitos na rede como um todo não serão significativos para o desempenho da rede, dado que existe outro caminho de ligação entre os nós que pode iludir a falha (HASTIE, TIBSHIRANI e FRIEDMAN, 2008).
+O poder de abstração das RNA deve-se à sua estrutura paralela e à capacidade de aprendizagem \cite{big-data}. A estrutura paralela resulta da existência de muitos neurônios ligados em uma mesma estrutura de pesos de conexão com facilidade de adaptação a distintos tipos entrada de dados. A estrutura paralela é desejável uma vez que permite a tolerância à falha, pois se algum neurônio falhar, os efeitos na rede como um todo não serão significativos para o desempenho da rede, dado que existe outro caminho de ligação entre os nós que pode iludir a falha \cite{statistical-learning}.
 
-Uma das principais características das RNA é a capacidade de aprender por meio de exemplos e de generalização, ou seja, reconhecer padrões em elementos que não foram apresentados antes, possibilitando a produção de resultado aceitável oriundo de uma nova entrada de informação (Haykin, S., 1999).
+Uma das principais características das RNA é a capacidade de aprender por meio de exemplos e de generalização, ou seja, reconhecer padrões em elementos que não foram apresentados antes, possibilitando a produção de resultado aceitável oriundo de uma nova entrada de informação \cite{neural-network}.
 
-As principais propriedades que podem se destacar das redes neurais artificiais são: não linearidade, mapeamento de entrada e saída, adaptabilidade e tolerância a falhas (Haykin, S., 1999).
+As principais propriedades que podem se destacar das redes neurais artificiais são: não linearidade, mapeamento de entrada e saída, adaptabilidade e tolerância a falhas \cite{neural-network}.
 
 \subsection{Redes Neurais Artificiais}
 
-Redes neurais artificiais foram originalmente planejadas no meio do século 20 como um modelo computacional do cérebro humano. Sua aplicação era limitada devido a limitação computacional disponível na época, além de algumas questões teóricas que não foram solucionadas por várias décadas (MURPHY, 2012).
+Redes neurais artificiais foram originalmente planejadas no meio do século 20 como um modelo computacional do cérebro humano. Sua aplicação era limitada devido a limitação computacional disponível na época, além de algumas questões teóricas que não foram solucionadas por várias décadas \cite{mlpp}.
 
-\begin{figure}
-    \caption{Neuronios}
+É teorizado que devido a sua inspiração biológica, algoritmos baseados em redes neurais artificiais serão capazes de simular como o ser humano reconhece conceitos e objetos \cite{learning-algorithms}.
+
+Em uma análise matemática, as RNA podem ser explicadas como uma mapeamento não linear de um vetor de espaço de entrada para um vetor de espaço de saída, que pode ser realizado por meio de camadas de funções de ativação, em que coordenadas de entrada são somadas de acordo com o valor de seus respectivos pesos e bias  para produzir uma saída simples, ativada ou não, de acordo com o respectivo nível de acionamento \cite{two-phase-flow}.
+
+O conceito de rede neural artificial é basicamente introduzido pela biologia onde a rede neural tem um importante papel no ser humano. No corpo humano todo trabalho é realizado com ajuda da rede neural. Uma rede neural é uma cadeia de milhões de neurônios interconectados \cite{ann}.
+
+\begin{figure}[h]
+    \caption{Neurônios}
     \centering
     \includegraphics[width=0.7\textwidth]{Textuais/Figuras/neuronios.png}
     \fonte{Autores}
     \label{fig:neuronios}
 \end{figure}
 
-É teorizado que devido a sua inspiração biológica, algoritmos baseados em redes neurais artificiais serão capazes de simular como o ser humano reconhece conceitos e objetos (COLINS, 2017).
+A terminologia rede neural é inspirada pelas operações biológicas realizadas por células especiais denominadas neurônios (Figura 5). Um neurônio é uma célula biológica especial que processa informação de um neurônio para outro com ajuda de um impulso elétrico e mudanças químicas que ocorrem no cérebro. Todo o processo de receber e enviar informação é realizado de uma forma particular: um neurônio recebe informações de outro neurônio através dos dendritos e envia informações com picos de atividade elétrica através de um longo e fino suporte conhecido como axônio que os divide em sinapses para enviá-los para outros neurônios \cite{ai}.
 
-Em uma análise matemática, as RNA podem ser explicadas como uma mapeamento não linear de um vetor de espaço de entrada para um vetor de espaço de saída, que pode ser realizado por meio de camadas de funções de ativação, em que coordenadas de entrada são somadas de acordo com o valor de seus respectivos pesos e bias  para produzir uma saída simples, ativada ou não, de acordo com o respectivo nível de acionamento (SELLI e SELEGHIM, 2007).
+\begin{figure}[h]
+    \caption{Célula de neuronio}
+    \centering
+    \includegraphics[width=0.7\textwidth]{Textuais/Figuras/celula.png}
+    \fonte{Adaptado de Russell e Norving (2010)}
+    \label{fig:celula}
+\end{figure}
 
-O conceito de rede neural artificial é basicamente introduzido pela biologia onde a rede neural tem um importante papel no ser humano. No corpo humano todo trabalho é realizado com ajuda da rede neural. Uma rede neural é uma cadeia de milhões de neurônios interconectados (SHARMA, RAI e DEV, 2012).
+As redes neurais artificiais têm o seu equivalente ao neurônio denominado nó que recebe um conjunto de entradas ponderadas, processa a sua soma com as funções de ativação $\phi$, e passa o resultado da função de ativação para o próximo nó (Figura 7) até o término da rede (Equação \ref{eq:no}) \cite{ann}.
 
-A terminologia rede neural é inspirada pelas operações biológicas realizadas por células especiais denominadas neurônios (Figura 5). Um neurônio é uma célula biológica especial que processa informação de um neurônio para outro com ajuda de um impulso elétrico e mudanças químicas que ocorrem no cérebro. Todo o processo de receber e enviar informação é realizado de uma forma particular: um neurônio recebe informações de outro neurônio através dos dendritos e envia informações com picos de atividade elétrica através de um longo e fino suporte conhecido como axônio que os divide em sinapses para enviá-los para outros neurônios (RUSSELL e NORVING, 2010).
+\begin{equation}
+\label{eq:no}
+    \phi \left( \sum_{i} w_i\times a_i \right) = \phi(w^T\times a)
+\end{equation}
 
-%\begin{figure}
-%    \caption{Célula de meuronio}
-%    \centering
-%    \includegraphics[width=0.7\textwidth]{Textuais/Figuras/celula.png}
-%    \fonte{Autores}
-%    \label{fig:celula}
-%\end{figure}
+Visualmente é equivalente a Figura \ref{fig:neuronio-rna}.
 
-As redes neurais artificiais têm o seu equivalente ao neurônio denominado nó que recebe um conjunto de entradas ponderadas, processa a sua soma com as funções de ativação $\phi$, e passa o resultado da função de ativação para o próximo nó (Figura 7) até o término da rede (Equação 18) (SHARMA, RAI e DEV, 2012).
-
-Visualmente é equivalente a Figura 7
+\begin{figure}[h]
+    \caption{Representação de um neurônio na RNA}
+    \centering
+    \includegraphics[width=0.4\textwidth]{Textuais/Figuras/rep-neronio.png}
+    \fonte{http://briandolhansky.com/blog/artificial-neural-networks-linear-regression-part-1}
+    \label{fig:neuronio-rna}
+\end{figure}
 
 \subsection{Funções de ativação}
 
-Funções de ativação são basicamente funções de transferência que são geradas pelos neurônios artificiais e envia sinal para outro neurônio artificial (SHARMA, RAI e DEV, 2012). As funções de ativação mais comuns são: Limiar, Degrau, Degrau Unitário, Linear e Logística (Figura 8). 
+Funções de ativação são basicamente funções de transferência que são geradas pelos neurônios artificiais e envia sinal para outro neurônio artificial \cite{ann}. As funções de ativação mais comuns são: Limiar, Degrau, Degrau Unitário, Linear e Logística (Figura \ref{fig:neuronio-rna}). 
 
-Existem diversas funções de ativação, como por exemplo a função linear (Equação  19), também denominada função identidade.
+\begin{figure}[h]
+    \caption{Funções de ativação}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Textuais/Figuras/funcao-ativacao.png}
+    \fonte{https://pt.stackoverflow.com/questions/61187/como-implementar-a-camada-oculta-em-uma-rede-neural-de-reconhecimento-de-caracte}
+    \label{fig:neuronio-rna}
+\end{figure}
 
-Outra função de ativação é a função sigmoid (Logística) representada pela Equação 19.
+Existem diversas funções de ativação, como por exemplo a função linear (Equação \ref{eq:linear}), também denominada função identidade.
 
-Uma função muito utilizada é a tanh, representada pela Equação 20.
+\begin{equation}
+\label{eq:linear}
+    \phi(w^Ta) =w^Ta
+\end{equation}
 
-A possível criação de uma rede neural ocorre por meio do encadeamento dos nós. Usualmente esse processo é realizado utilizando camadas, as saídas de um nó estão conectadas a entrada dos nós da próxima camada (ABADI, 2015).
+Outra função de ativação é a função sigmoid (Logística) representada pela Equação \ref{eq:sigmoid}.
 
-O objetivo de aproximações de funções é treinar uma rede neural que seja capaz, a partir de um conjunto de dados entrada-saída, de mapear uma determinada relação funcional que contemple o universo de amostras sob análise. O treinamento, nesse caso, envolve o aprendizado dos pesos de borda corretos para produzir a saída de destino, dada uma entrada (SHWARTZ e DAVID, 2014). A rede e seus pesos treinados formam uma função (denominada h) que operam sob dados de entrada. Com a rede treinada, é possível produzir previsões para valores de entrada previamente desconhecidos.
+\begin{equation}
+\label{eq:sigmoid}
+    \phi(w^Ta)=\frac{1}{1+exp(-w^Ta)} 
+\end{equation}
+
+Uma função muito utilizada é a tanh, representada pela Equação \ref{eq:tanh}.
+
+\begin{equation}
+\label{eq:tanh}
+    \phi(w^Ta) = tanh(w^Ta)
+\end{equation}
+
+A possível criação de uma rede neural ocorre por meio do encadeamento dos nós. Usualmente esse processo é realizado utilizando camadas, as saídas de um nó estão conectadas a entrada dos nós da próxima camada \cite{tensor-flow}.
+
+O objetivo de aproximações de funções é treinar uma rede neural que seja capaz, a partir de um conjunto de dados entrada-saída, de mapear uma determinada relação funcional que contemple o universo de amostras sob análise. O treinamento, nesse caso, envolve o aprendizado dos pesos de borda corretos para produzir a saída de destino, dada uma entrada \cite{uml}. A rede e seus pesos treinados formam uma função (denominada h) que operam sob dados de entrada. Com a rede treinada, é possível produzir previsões para valores de entrada previamente desconhecidos.
 
 É possível treinar uma rede neural para realizar regressão ou classificação. Nesse trabalho iremos abordar somente a regressão linear. 
 
@@ -74,30 +126,61 @@ O objetivo de aproximações de funções é treinar uma rede neural que seja ca
     \label{fig:reg-class}
 \end{figure}
 
-Regressão linear é a forma mais simples de regressão (RUSSELL e NORVING, 2010). Modelamos o nosso sistema como combinações lineares de features para produzir uma saída.
+\subsection{Regressão Linear}
 
-A RNA torna-se responsável por encontrar os pesos que geram o melhor resultado para os dados de treinamento. Um modo de verificar a qualidade da aproximação é utilizando o método dos mínimos quadrados (também conhecido como Loss) (HOPE e LIEDER, 2017).
+Regressão linear é a forma mais simples de regressão \cite{ai}. Modelamos o nosso sistema como combinações lineares de features para produzir uma saída.
 
-Para poder realizar o melhor ajuste é preciso minimizar o valor de L(w). Esse método possui uma solução analítica, mas em geral pode-se resolver utilizando o método do gradiente descendente (RUSSELL e NORVING, 2010).
+\begin{equation}
+    y_i = h(x_i,w) = w^Tx_i
+\end{equation}
+
+A RNA torna-se responsável por encontrar os pesos que geram o melhor resultado para os dados de treinamento. Um modo de verificar a qualidade da aproximação é utilizando o método dos mínimos quadrados (também conhecido como Loss) \cite{tf}.
+
+\begin{equation}
+    L(w) = \sum_i \left( h(x_i,w)-y_i^2 \right)^2
+\end{equation}
+
+Para poder realizar o melhor ajuste é preciso minimizar o valor de L(w). Esse método possui uma solução analítica, mas em geral pode-se resolver utilizando o método do gradiente descendente \cite{ai}.
 
 A rede neural mais simples utiliza o método dos mínimos quadrados para realizar uma regressão linear como mostra a Figura 10. 
 
-Essa rede recebe como entrada de dados duas features xi(1) e xi(2), os pesos das features como w1 e w2 e os soma, e como saída tem-se a previsão yi. Pode-se considerar uma rede neural com n parâmetros de entrada, porém a rede deve conter n pesos, sendo equivalente um peso para cada entrada. Para poder determinar a qualidade de aproximação é possível utilizar o método dos mínimos quadrados (MOHRI, ROSTAMIZADEH e TALWALKAR, 2012).
+Essa rede recebe como entrada de dados duas features xi(1) e xi(2), os pesos das features como w1 e w2 e os soma, e como saída tem-se a previsão yi. Pode-se considerar uma rede neural com n parâmetros de entrada, porém a rede deve conter n pesos, sendo equivalente um peso para cada entrada. Para poder determinar a qualidade de aproximação é possível utilizar o método dos mínimos quadrados \cite{ML}.
 
-Abadi (2015) utiliza o método do gradiente descente para minimizar os erros em relação aos dados de treinamento. Primeiramente deriva-se o gradiente descendente em relação a um determinado peso wj->k
+\citeonline{tensor-flow} utiliza o método do gradiente descente para minimizar os erros em relação aos dados de treinamento. Primeiramente deriva-se o gradiente descendente em relação a um determinado peso wj->k
 
 Nesse ponto, calcula-se o gradiente da função da rede em relação ao peso da derivada parcial. 
 
-O gradiente em relação a w1 é apenas x1, e o gradiente em relação a w2 é apenas x2, dessa forma o gradiente é dado pela Equação 28.
+A função da rede é dada pela Equação \ref{eq:funcao-rede}.
+
+\begin{equation}
+\label{eq:funcao-rede}
+    h(x_i,w) = w_1x_i^{(1)} + w_2x_i^{(2)}
+\end{equation}
+
+O gradiente em relação a w1 é apenas x1, e o gradiente em relação a w2 é apenas x2, dessa forma o gradiente é dado pela Equação \ref{eq:gradiente}.
+
+\begin{equation}
+\label{eq:gradiente}
+    \nabla_wL(w) = \left( \frac{\partial L(w)}{\partial w_1}, \frac{\partial L(w)}{\partial w_2} \right) = \left( \sum_i 2x_i ^{(1)} h(x_i,w), \sum_i 2x_i ^{(2)} h(x_i,w) \right)
+\end{equation}
 
 Agora é possível atualizar os pesos utilizando o gradiente descendente padrão
 
-Onde ``eta`` é o passo.
+\begin{equation}
+    w = w -\eta \nabla_w L(w)
+\end{equation}
+
+Onde ``$\eta$`` é o passo.
 
 \subsection{Testando a RNA}
 
-Com a rede treinada, testar consiste em obter a previsão para cada ponto xi utilizando a função h(xi, w). O erro pode ser calculado da mesma forma do treinamento utilizando a Equação 30.
+Com a rede treinada, testar consiste em obter a previsão para cada ponto xi utilizando a função h(xi, w). O erro pode ser calculado da mesma forma do treinamento utilizando a Equação \ref{eq:teste-rna}.
+
+\begin{equation}
+\label{eq:teste-rna}
+    L(w) = (\overline{y_i} - y_i)^2
+\end{equation}
 
 \subsection{Teorema Universal da Aproximação}
 
-O Teorema Universal da Aproximação garante que uma Rede Neural Artificial do tipo Função Radial de Base pode ser treinada para ajustar, satisfatoriamente, qualquer função contínua definida em um conjunto fechado (HAYKIN, 1999).
+O Teorema Universal da Aproximação garante que uma Rede Neural Artificial do tipo Função Radial de Base pode ser treinada para ajustar, satisfatoriamente, qualquer função contínua definida em um conjunto fechado \cite{neural-network}.
