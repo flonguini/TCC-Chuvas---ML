@@ -1,8 +1,8 @@
-\section{Ajuste a distribuições estatísticas}
+\section{Ajuste a distribuições de extremos estatísticas}
 
-O desenvolvimento tecnológico e científico possibilita registrar o comportamento das variáveis hidrológicas, como por exemplo, chuvas, níveis de rios e nevascas. O acúmulo dos dados permitiu a criação de séries históricas, as quais são analisadas utilizando à estatística como uma ferramenta de tratamento de dados, dessa maneira o conhecimento dos conceitos estatísticos é indispensável ao desenvolvimento de estudos em hidrologia \cite{hidrologia-estatistica}.
+O desenvolvimento tecnológico e científico possibilita registrar o comportamento das variáveis hidrológicas, como por exemplo, chuvas, níveis de rios e nevascas. O acúmulo dos dados permitiu a criação de séries históricas, as quais são analisadas utilizando a estatística como uma ferramenta de tratamento de dados; dessa maneira o conhecimento dos conceitos estatísticos é indispensável ao desenvolvimento de estudos em hidrologia \cite{hidrologia-estatistica}.
 
-\textit{As variáveis hidrológicas e hidrometerológicas têm sua variabilidade registrada por meio das chamadas séries temporais, as quais reúnem as observações ou medições daquela variável, organizadas de forma sequencial de sua ocorrência no tempo (ou espaço). Por limitações impostas pelos processos de medição ou observações, as variáveis hidrológicas, embora apresentem variações instantâneas são contínuas ao longo do tempo, ou do espaço, têm seus registros separados por determinados intervalos de tempo, ou de distância \cite{hidrologia-estatistica-np}.}
+As variáveis hidrológicas e hidrometerológicas têm sua variabilidade registrada por meio das chamadas séries temporais, as quais reúnem as observações ou medições daquela variável, organizadas de forma sequencial de sua ocorrência no tempo (ou espaço). Por limitações impostas pelos processos de medição ou observações, as variáveis hidrológicas, embora apresentem variações instantâneas são contínuas ao longo do tempo, ou do espaço, têm seus registros separados por determinados intervalos de tempo, ou de distância \cite{hidrologia-estatistica-np}.
 
 De acordo com \citeonline{hidrologia-estatistica-np} as séries hidrológicas podem incluir todas as observações disponíveis, coletadas em intervalos de tempo regulares ao longo de vários anos de registros, ou apenas alguns de seus valores característicos como, por exemplo, os máximos anuais ou as médias mensais. 
 
@@ -12,7 +12,7 @@ No caso específico de eventos hidrológicos extremos, como por exemplo máximos
 
 As séries de máximos valores são empregadas para ajuste, segundo a lei probabilística que melhor descreva o processo, possibilitando extrapolações \cite{spchuva}.
 
-\textit{Distribuições teóricas de probabilidade são simplesmente funções analíticas usadas para descrever o comportamento de determinadas variáveis. No caso de extremos, só os ajustes das séries longas em múltiplas localidades é que dá indicações sobre as distribuições que levam a melhor extrapolação \cite{piracicaba}.}
+Distribuições teóricas de probabilidade são simplesmente funções analíticas usadas para descrever o comportamento de determinadas variáveis. No caso de extremos, só os ajustes das séries longas em múltiplas localidades é que dá indicações sobre as distribuições que levam a melhor extrapolação \cite{piracicaba}.
 
 Embora a teoria probabilística fundamental de valores extremos tenha sido desenvolvida há muito tempo, a modelagem estatística de extremos ainda permanece como assunto ativo de pesquisas dado seu importante papel nos projetos e gerenciamento de recursos hídricos, especialmente em um contexto de mudanças climáticas \cite{extremes}.
 
@@ -61,7 +61,7 @@ A distribuição de Fréchet é uma forma particular da distribuição de valore
     P(x) = e^{-e^{-\alpha(x-\beta)}}
 \end{equation}
 
-\textit{No caso dos valores máximos, a distribuição de Fréchet refere-se à forma assintótica limite para um conjunto de N variáveis aleatórias originais, independentes e igualmente distribuídas conforme um modelo, de cauda superior polinomial. A distribuição foi usada pela primeira vez na análise de frequência de vazões de enchentes por Fréchet (1927), tendo, desde então, encontrado aplicações, como distribuição extrema de eventos hidrológicos máximos.}
+No caso dos valores máximos, a distribuição de Fréchet refere-se à forma assintótica limite para um conjunto de N variáveis aleatórias originais, independentes e igualmente distribuídas conforme um modelo, de cauda superior polinomial. A distribuição foi usada pela primeira vez na análise de frequência de vazões de enchentes por Fréchet (1927), tendo, desde então, encontrado aplicações, como distribuição extrema de eventos hidrológicos máximos.
 
 \subsection{Distribuição de Weibull}
 
@@ -74,7 +74,16 @@ A distribuição de Weibull a dois parâmetros tem como função de distribuiç�
     P(x) = 1 - e^{-(\frac{x-\alpha}{\beta})^\lambda}
 \end{equation}
 
-\citeonline{catalunha} realizou um trabalho em Minas Gerais, concluindo que a distribuição de Weibull possui um ótimo desempenho para estimar as precipitações diárias.
+Em que:
+
+$\alpha$ = Vida mínima ou Confiabilidade Intrínseca
+
+$\lambda$ = Fator de forma (indica a forma da curva e a característica das falhas)
+
+$\beta$ = Vida característica ou parâmetro de escala \\
+
+
+\par \citeonline{catalunha} realizou um trabalho em Minas Gerais, concluindo que a distribuição de Weibull possui um ótimo desempenho para estimar as precipitações diárias.
 
 \citeonline{chuvas-brasil}, realizando os primeiros estudos no Brasil, utilizou séries de valores extremos de precipitações de 98 plataformas de coleta de dados distribuídas em várias regiões do Brasil, para a construção de curvas IDF, utilizando com ferramenta estatística a distribuição de Weibull.
 

@@ -10,18 +10,519 @@
 \partapendices
 
 % ----------------------------------------------------------
-\chapter{Quisque libero justo}
+\chapter{Algoritmo para determinar os parâmetros da equação geral}
 % ----------------------------------------------------------
 
-Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus
+Nesse apêndice é apresentado o código-fonte da implementação computacional em Python para determinar os parâmetros da Equação de Mendes-Ramos.
 
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+O código a seguir é responsável pela criação das classes com as máximas intensidades de chuva para cada duração. Também é responsável pela propriedade contendo os períodos de retorno a serem avaliados pela distribuição de Gumbel.
 
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{python}
+  
+    # Data Access Layer
+    import numpy as np
+    
+    class Dados:
+        __periodoRetorno = None
+        __precipitacao5 = None
+        __precipitacao10 = None
+        __precipitacao15 = None
+        __precipitacao30 = None
+        __precipitacao60 = None
+        __precipitacao120 = None
+        __precipitacao240 = None
+        __precipitacao360 = None
+        __precipitacao720 = None
+        __precipitacao1080 = None
+        __duracoes = None
+    
+        # Construtor - Inicializa os fields da classe
+        def __init__(self):
+            self.__periodoRetorno = np.array([2, 3, 5, 10, 15, 20, 25, 50, 
+            100])
+            self.__duracoes = np.array([5, 10, 15, 30, 60, 120, 240, 360, 
+            720, 1080])
+            self.__precipitacao5 = np.array([7.75, 6.5, 17.25, 8.75, 9.5, 
+            11, 9.25, 9.75, 12.25])
+            self.__precipitacao10 = np.array([14.25,11.50,29.25,13.25,
+            13.00,20.50,15.50,16.50,24.00])
+            self.__precipitacao15 = np.array([16.50, 16.50, 36.50, 17.50, 
+            17.25, 28.00, 20.25, 20.75, 32.50])
+            self.__precipitacao30 = np.array([22.25, 29.50, 51.25, 29.00, 
+            26.75, 41.75, 37.75, 26.00, 57.00])
+            self.__precipitacao60 = np.array([29.25, 45.25, 69.75, 45.25, 
+            40.50, 63.00, 47.50, 33.25, 71.25])
+            self.__precipitacao120 = np.array([36.50, 52.25, 102.25, 62.25, 
+            41.75, 66.50, 55.50, 44.50, 87.25])
+            self.__precipitacao240 = np.array([50.75, 53.50, 137.25, 71.50, 
+            47.25, 68.75, 82.00, 77.75, 100.75])
+            self.__precipitacao360 = np.array([61.50, 54.00, 176.75, 93.25, 
+            56.00, 86.00, 97.25, 95.00, 102.00])
+            self.__precipitacao720 = np.array([94.25, 81.00, 206.50, 102.75, 
+            73.75, 111.25, 110.50, 112.00, 124.75])
+            self.__precipitacao1080 = np.array([100.25, 90.25, 206.50, 102.75, 
+            80.75, 112.75, 112.50, 125.00, 125.75])
+        
+        # Propriedades
+        @property
+        def get_periodoRetorno(self):
+            return self.__periodoRetorno
+    
+        @property
+        def get_precipitacao5(self):
+            return self.__precipitacao5
+    
+        @property
+        def get_precipitacao10(self):
+            return self.__precipitacao10
+    
+        @property
+        def get_precipitacao15(self):
+            return self.__precipitacao15
+        
+        @property
+        def get_precipitacao30(self):
+            return self.__precipitacao30
+    
+        @property
+        def get_precipitacao60(self):
+            return self.__precipitacao60
+    
+        @property
+        def get_precipitacao120(self):
+            return self.__precipitacao120
+        
+        @property
+        def get_precipitacao240(self):
+            return self.__precipitacao240
+    
+        @property
+        def get_precipitacao360(self):
+            return self.__precipitacao360
+    
+        @property
+        def get_precipitacao720(self):
+            return self.__precipitacao720
+        
+        @property
+        def get_precipitacao1080(self):
+            return self.__precipitacao1080
+    
+        @property
+        def get_duracoes(self):
+            return self.__duracoes
+\end{minted}
 
-Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus
+O código fonte apresentado nas próximas linhas é responsável pela estimativa do coeficiente b da equação idf, fazendo uma iteração entre os valores -100 e 100 até encontrar o melhor valor que torne os dados o mais próximo de uma reta.
 
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{python}
+    import numpy as np
+    from scipy import stats
+    
+    
+    def estimar_b(intensidade, duracao):
+        i1 = intensidade[0]
+        i2 = intensidade[-1]
+        i3 = (i1*i2)**0.5
+        t3 = 0
+        bi = 0
+    
+        for i in range(0, len(intensidade)):
+            if ((i3<intensidade[i]) and (i3 >= intensidade[i+1])):
+                t3 = -((duracao[i]-duracao[i+1])*i3-(duracao[i]*intensidade[i+1]
+                -duracao[i+1]*intensidade[i]))/(intensidade[i+1]-intensidade[i])
+                bi = ((t3**2)-duracao[0]*duracao[np.size(duracao)-1])/(duracao[0]
+                +duracao[np.size(duracao)-1]-2*t3)
+                break
+        
+        b3=[]
+    
+        for x in range(-100,100):
+            if (bi+x >= 0):
+                b2 = bi + x
+                b3.append(round(b2,0))
+            else:
+                b2 = 0
+                b3.append(b2)
+        
+        duracao1 = []
+        r2_regressao = []
+        coef_angular=[]
+        coef_linear =[]
+    
+        for i in range(0,9):
+            duracao1.append(duracao + b3[i])
+            slope, intercept, r_value, p_value, std_err = 
+            regressao_linear(np.log10(duracao1[i]), np.log10(intensidade))
+            r2_regressao.append(r_value**2)
+            coef_angular.append(slope)
+            coef_linear.append(intercept)
+        
+        r2_max = np.argmax(r2_regressao)
+        z = regressao_linear(np.log10(duracao+b3[r2_max]), np.log10(intensidade))
+    
+        return z, b3[r2_max]
+    
+    def regressao_linear(x,y):
+        return stats.linregress(x, y)
+\end{minted}
+
+O próximo código é responsável pela determinação dos outros parâmetros da equação, bem como apresentar o gráfico da curva IDF.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{python}
+    import dal
+    import numpy as np
+    import time
+    import matplotlib.pyplot as plt
+    import precipitacao as prep
+    from numpy.linalg import inv
+    
+    #Inicializa o cronometro para o cálculo do tempo de processamento
+    start_time = time.time()
+    
+    #Instancia a classe com os dados das chuvas
+    dados = dal.Dados()
+    
+    tr = np.array(dados.get_periodoRetorno)
+    duracoes = dados.get_duracoes
+    
+    #Cria uma lista com todas as precipitações
+    precipitacoes = np.array([dados.get_precipitacao5, dados.get_precipitacao10, 
+    dados.get_precipitacao15, dados.get_precipitacao30, dados.get_precipitacao60, 
+    dados.get_precipitacao120, dados.get_precipitacao240, 
+    dados.get_precipitacao360, dados.get_precipitacao720, 
+    dados.get_precipitacao1080])
+    
+    precipitacao_decrescente = []
+    anos_observados = []
+    media_i = []
+    desvio_padrao_i = []
+    alpha_i = []
+    mi_i = []
+    gumbel_i = []
+    empirica_i = []
+    diferenca_gumbel_empirica_i = []
+    maxima_diferenca = []
+    r2_i = []
+    reduzida_gumbel = []
+    intensidades = []
+    
+    for i in range(0, np.size(duracoes)):
+        p = prep.Precipitacao(*precipitacoes[i])
+        precipitacao_decrescente.append(np.array(p.PrecipitacaoDecrescente()))
+        anos_observados.append(p.Anos_Observados) #cte
+        media_i.append(p.MediaDuracoes())
+        desvio_padrao_i.append(p.DesvioPadrao())
+        alpha_i.append(p.ParametroAlpha())
+        mi_i.append(p.ParametroMi())
+        gumbel_i.append(p.Gumbel())
+        empirica_i.append(p.AcumuladaEmpirica()) 
+        diferenca_gumbel_empirica_i.append(p.DiferencaTeoricoEmpirico())
+        maxima_diferenca.append(p.MaximaDiferenca())
+        distribuicoes = {"gumbel" : gumbel_i[i], "empirica" : empirica_i[i]}
+        r2_i.append(p.R2(**distribuicoes))
+        reduzida_gumbel.append(p.VariavelReduzidaGumbel(tr))
+        intensidades.append(p.PrecipitacaoParaIntensidade(duracoes[i], 
+        *reduzida_gumbel))
+    
+    matriz2 = []
+    matriz3 = []
+    matriz5 = []
+    matriz10 = []
+    matriz15 = []
+    matriz20 = []
+    matriz25 = []
+    matriz50 = []
+    matriz100 = []
+    
+    for x in range(0, len(duracoes)):
+        matriz2.append(intensidades[x][0])
+        matriz3.append(intensidades[x][1])
+        matriz5.append(intensidades[x][2])
+        matriz10.append(intensidades[x][3])
+        matriz15.append(intensidades[x][4])
+        matriz20.append(intensidades[x][5])
+        matriz25.append(intensidades[x][6])
+        matriz50.append(intensidades[x][7])
+        matriz100.append(intensidades[x][8])
+        
+    
+    plt.figure(1)
+    plt.plot(duracoes, matriz2, label="TR2") 
+    plt.plot(duracoes, matriz5, label="TR5") 
+    plt.plot(duracoes, matriz10, label="TR10") 
+    plt.plot(duracoes, matriz15, label="TR15")
+    plt.plot(duracoes, matriz20, label="TR20") 
+    plt.plot(duracoes, matriz25, label="TR25")
+    plt.plot(duracoes, matriz50, label="TR50")
+    plt.plot(duracoes, matriz100, label="TR100")
+    plt.xlabel("Duração (mim)")
+    plt.ylabel("Intensidade (mm)")
+    plt.title("Curva IDF ajustada para distribuição de Gumbel")
+    plt.legend()
+    plt.show()
+    
+    """plt.figure(2)
+    plt.scatter(np.log10(duracoes), np.log10(matriz100), label="TR100")
+    plt.xlabel("Duração (mim)")
+    plt.ylabel("Intensidade (mm)")
+    plt.title("Curva IDF ajustada para distribuição de Gumbel")
+    plt.legend()
+    plt.show()"""
+    
+    import estimarb as b
+    
+    
+    b_estimado =[]
+    r_quadrado = []
+    coef_linear = []
+    coef_angular = []
+    
+    calcular_b = b.estimar_b(matriz2, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz3, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz5, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz10, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz15, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz20, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz25, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz50, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    calcular_b = b.estimar_b(matriz100, duracoes)
+    coef_angular.append(calcular_b[0][0])
+    coef_linear.append(calcular_b[0][1])
+    r_quadrado.append(calcular_b[0][2]**2)
+    b_estimado.append(calcular_b[1])
+    
+    #Regressão múltipla para determinação dos coeficientes
+    T = np.size(intensidades)
+    b1 = int(0.4 * np.amin(b_estimado))
+    b3 = int(1.2 * np.amax(b_estimado))
+    b2 = []
+    A = np.zeros(shape=(3,3))
+    B=[]
+    C1=[]
+    M1=[]
+    N1=[]
+    K=[]
+    M=[]
+    N=[]
+    R2 = []
+    
+    for x in range(b1, b3+1):
+        b2.append(x)
+    
+    numero_de_b = np.size(b2)
+    dimensao_gumbel = np.size(intensidades)
+    
+    for f in range(0, numero_de_b):
+        pontos_z_lin = np.asarray(np.log10(intensidades)).reshape(-1) 
+        pontos_x_lin = np.repeat(np.log10(duracoes+b2[f]), np.size(tr))
+        pontos_y_lin = np.tile(np.log10(tr), np.size(duracoes)) 
+    
+        A[0,0] = T
+        A[0,1] = np.sum(pontos_y_lin)
+        A[0,2] = np.sum(pontos_x_lin)
+        A[1,0] = np.sum(pontos_y_lin)
+        A[1,1] = np.sum(pontos_y_lin * pontos_y_lin)
+        A[1,2] = np.sum(pontos_x_lin * pontos_y_lin)
+        A[2,0] = np.sum(pontos_x_lin)
+        A[2,1] = np.sum(pontos_x_lin * pontos_y_lin)
+        A[2,2] = np.sum(pontos_x_lin * pontos_x_lin)
+    
+        B.clear()
+        B.append(np.sum(pontos_z_lin))
+        B.append(np.sum(pontos_y_lin * pontos_z_lin))
+        B.append(np.sum(pontos_x_lin * pontos_z_lin))
+    
+        A_inv = inv(A)
+    
+        solucao = np.linalg.solve(A, B)
+    
+        C1.append(solucao[0])
+        M1.append(solucao[1])
+        N1.append(solucao[2])
+        K.append(10**C1[f])
+        M.append(M1[f])
+        N.append(N1[f])
+    
+        pty=np.tile(tr, np.size(duracoes))
+        ptx = np.repeat(duracoes, np.size(tr))
+    
+        I_est_idf = ((pty ** M[f])*K[f]) * ((ptx+b2[f])**N[f])
+    
+        an=np.asarray(intensidades).reshape(-1)-
+        np.mean(np.asarray(intensidades).reshape(-1))
+        bn=I_est_idf-np.mean(I_est_idf)
+        R2.append(((np.sum(an*bn)/(np.sum(an**2)*np.sum(bn**2))**0.5))**2)
+    
+    
+    print("Coef K: ", K[np.argmax(R2)])
+    print("Coef M: ", M[np.argmax(R2)])
+    print("Coef N: ", N[np.argmax(R2)])
+    print("Coef b:", b2[np.argmax(R2)])
+    print("R2: ", R2[np.argmax(R2)])
+    print("--- Tempo de processamento %s segundos ---" % (time.time() - 
+    start_time))
+\end{minted}
+
+\chapter{Algoritmo para aproximar a função por meio de IA}
+
+Esse apêndice apresenta o algoritmo desenvolvido em Matlab da rede neural recorrente em que as constantes são as que obtiveram o melhor valor do coeficiente de determinação para cada período de retorno. 
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{matlab}
+
+        function [Y,Xf,Af] = myNeuralNetworkFunction(X,~,~)
+
+        % ===== NEURAL NETWORK CONSTANTS =====
+        
+        % Input 1
+        x1_step1.xoffset = 5;
+        x1_step1.gain = 0.00186046511627907;
+        x1_step1.ymin = -1;
+        
+        % Layer 1
+        b1 = [11.54090071220356073;8.4772450148319844487;6.5261388646264366642;
+        2.9674351566870731389; 1.2178220153517067548;0.70486678409796743594;
+        -2.9937829750619364688;-11.148753806533420629;-15.293586250243739855;
+        28.530462711213733229];
+        IW1_1 = [-12.273804592870089181;-10.800994703366928462;
+        -10.180488407919053628;-7.7359047362149384597;-8.2381441164788284937;
+        10.987952091508864427;-1.3999111346683161816;-14.016595370202120208;
+        -16.56645937666741375;27.549902920393265049];
+        
+        % Layer 2
+        b2 = 8.9148386366500407263;
+        LW2_1 = [0.0039532554427080856055 0.0043626122563336922067 
+        0.0045844779975845392772 0.009349172795378619949
+        0.0054011999595848523073 -0.0049487394160704642823 6.4383624238245396043 
+        0.061712764074571817285 0.286809773387178224 -3.0986459999752899996];
+        
+        % Output 1
+        y1_step1.ymin = -1;
+        y1_step1.gain = 0.0181283872157426;
+        y1_step1.xoffset = 6.187705798;
+        
+        % ===== SIMULATION ========
+        
+        % Format Input Arguments
+        isCellX = iscell(X);
+        if ~isCellX
+            X = {X};
+        end
+        
+        % Dimensions
+        TS = size(X,2); % timesteps
+        if ~isempty(X)
+            Q = size(X{1},2); % samples/series
+        else
+            Q = 0;
+        end
+        
+        % Allocate Outputs
+        Y = cell(1,TS);
+        
+        % Time loop
+        for ts=1:TS
+            
+            % Input 1
+            Xp1 = mapminmax_apply(X{1,ts},x1_step1);
+            % Layer 1
+            a1 = tansig_apply(repmat(b1,1,Q) + IW1_1*Xp1);
+            % Layer 2
+            a2 = repmat(b2,1,Q) + LW2_1*a1;
+            % Output 1
+            Y{1,ts} = mapminmax_reverse(a2,y1_step1);
+        end
+        
+        % Final Delay States
+        Xf = cell(1,0);
+        Af = cell(2,0);
+        
+        % Format Output Arguments
+        if ~isCellX
+            Y = cell2mat(Y);
+        end
+        end
+        
+        % ===== MODULE FUNCTIONS ========
+        
+        % Map Minimum and Maximum Input Processing Function
+        function y = mapminmax_apply(x,settings)
+        y = bsxfun(@minus,x,settings.xoffset);
+        y = bsxfun(@times,y,settings.gain);
+        y = bsxfun(@plus,y,settings.ymin);
+        end
+        
+        % Sigmoid Symmetric Transfer Function
+        function a = tansig_apply(n,~)
+        a = 2 ./ (1 + exp(-2*n)) - 1;
+        end
+        
+        % Map Minimum and Maximum Output Reverse-Processing Function
+        function x = mapminmax_reverse(y,settings)
+        x = bsxfun(@minus,y,settings.ymin);
+        x = bsxfun(@rdivide,x,settings.gain);
+        x = bsxfun(@plus,x,settings.xoffset);
+        end
+
+\end{minted}
 \end{apendicesenv}

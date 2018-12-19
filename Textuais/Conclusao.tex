@@ -1,4 +1,25 @@
 \chapter{Conclusão}
 
-Curta e objetiva. O que devia ser dito, já foi dito. Nessa seção se faz um breve resumo dos melhores resultados do trabalho, reforçando o que já foi apresentado na discussão. Normalmente não passa de uma página, contendo de 2 a 3 parágrafos apenas. A conclusão deve estar rigorosamente alinhada com os objetivos do trabalho. É comum que nessa altura do relatório se saiba exatamente o que o estudo é e, com isso, muitas vezes é conveniente alterar o título do trabalho para que ele expresse o conteúdo do documento com a máxima especificidade possível.
-Se oportuno, a critério do Orientador(a) um parágrafo adicional ou até nova seção deve ser incluída com sugestões de continuações ou do estudo de outros aspectos que, ao decorrer do estudo, foram percebidos como relevantes e merecedores de investigação específica.
+Este trabalho teve como premissa propor uma ferramenta computacional para generalizar as equações de chuvas intensas utilizando como base uma técnica pouco explorada na área de hidrologia, inteligência artificial e redes neurais artificiais recorrentes.
+
+A ideia é que um algorítimo de rede recorrente tem uma capacidade de generalização muito grande, criando a possibilidade de implementar um único algoritmo que pudesse ``entender`` o comportamento de chuvas de uma região e transformá-lo em uma equação que melhor represente as características intrínsecas da microrregião, considerando sempre que possível os impactos das mudanças climáticas e geomorfológicas.
+
+Para validar esta hipótese foi analisado uma série histórica da cidade de Recife, entre os anos de 2003 e 2011, determinando os parâmetros da equação de Mendes-Ramos, em seguida, foram avaliadas as arquiteturas das redes neurais artificiais que melhor se aproximam das intensidades máximas para cada período de retorno com durações entre 5 minutos e 1080 minutos.
+
+Pode-se observar que, em geral, o modelo proposto nesse trabalho tem resultados melhores do que o modelo estatístico proposto na literatura. Os resultados podem ser considerados promissores e provou-se capaz de representar com qualidade a cidade de Recife. Quando se compara com outros métodos mais tradicionais, pode-se concluir que houve um ganho considerável em termos de acurácia, fazendo com que o dimensionamento de obras hidráulicas tornem-se mais econômicas e fiéis a região.
+
+\section{Trabalhos futuros}
+
+O campo de estudos de redes neurais artificiais oferece uma infinidade de possibilidades de pesquisa. Desta maneira, esse trabalho pode ser estendido de diversas formas.
+
+No que se diz respeito a qualidade das previsões, problemas com rede neurais artificiais depende muito da qualidade dos dados de entrada. Dessa maneira, devido a grande falhas nas séries históricas do Brasil uma das possibilidades é trabalhar como a saída de dados irá se comportar com falhas na série histórica.
+
+Os bancos de dados sobre chuvas estão sempre recebendo dados novos de precipitações que ocorreram mais recentemente. Um estudo importante seria entender como as redes neurais podem se comportar a medida em que novos valores são inseridos, buscando identificar características, mudanças e padrões da região.
+
+\begin{enumerate}
+    \item Verificar se a rede neural consegue convergir quando as séries históricas estão com falhas.
+    \item Alterar os parâmetros da rede imputados no ``nntools`` para verificar se ocorre uma otimização.
+    \item Modificar o algoritmo de convergência para avaliar a forma como a rede irá convergir.
+    \item Testar a rede com uma série histórica superior a 30 anos.
+    \item Verificar da rede neural para diferentes períodos de retorno. 
+\end{enumerate}

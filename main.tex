@@ -4,18 +4,18 @@
     %Capítulos começam em página ímpar (insere uma página caso necessário)
     openright,
     %Impressão em frente e verso - oposto de oneside
-    twoside, 
+    oneside, 
     %tamanho da página
     a4paper, 
     %Configurações opcionais
     %Altera para maiúscula as fontes dos capítulos
-    chapter = TITLE, 
+    chapter = title, 
     %Altera para maiúscula as fontes das seções
-    section = TITLE, 
+    section = title, 
     %Altera para maiúscula as fontes das subseções
-    subsection = TITLE, 
+    subsection = title, 
     %Altera para maiúscula as fontes das sub-subseções
-    subsubsection = TITLE,  
+    subsubsection = title,  
     %Idiomas para hifenização
     engish,
     brazil %Último idioma é a língua do documento
@@ -25,9 +25,9 @@
 %Pacotes utilizados em citações
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na referência
 \usepackage[alf]{abntex2cite}	                 % Citações padrão ABNT
-
+\usepackage{titlesec}
 %Inclusão de pacotes básicos
-\usepackage{lmodern}        %Utiliza a fonte Lmodern no documento
+\usepackage{times}
 \usepackage[T1]{fontenc}	% Seleção de códigos de fonte
 \usepackage{lastpage}		% Usado pela Ficha catalográfica
 \usepackage{indentfirst}	% Indenta o primeiro parágrafo de cada seção
@@ -37,6 +37,17 @@
 \usepackage{enumitem}       %alíneas
 \usepackage[utf8]{inputenc} %Codificação do documento UTF8 permite a utilização de acentos
 \usepackage{float}
+\usepackage{tocloft}        %usado para criar uma nota lista (lista de equações)
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+%formatação dos capítulos, seções e subseções
+\titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{12pt}{\MakeUppercase}{\large}\titlespacing*{\chapter}{0pt}{10pt}{15pt}
+\titleformat{\section}{\normalfont\large}{\thesection}{12pt}{\MakeUppercase}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{12pt}{}
+\titleformat{\subsubsection}{\normalfont\normalsize}{\thesubsubsection}{12pt}{}
+
 
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
@@ -54,7 +65,7 @@
 
 %Informações do documento
 
-\titulo{Ferramenta computacional para aproximação dinâmica da equação de chuva intensa por meio de inteligência artificial}
+\titulo{Ferramenta computacional para aproximação dinâmica da equação de chuva intensa por meio de redes neurais artificiais}
 \autor{Erick Hardt \\ Fernando Longuini da Silva \\ João Pedro Lang Ramalho \\ Matheus Swerts Neder Miranda}
 \local{Brasil}
 \data{2018}
@@ -63,7 +74,7 @@
 
 \definecolor{blue}{RGB}{41,5,195} %Define a cor azul do texto
 
-\preambulo{Trabalho acadêmico sobre chuvas.}
+\preambulo{Trabalho de Graduação apresentado à Escola de Engenharia Mauá do Centro Universitário do Instituto Mauá de Tecnologia como requisito parcial para a obtenção de título de Engenheiro Civil. \newline Área de Concentração: Engenharia civil}
 
 %Configurações de links do documento
 \makeatletter %Permite a utilização do @ como macros
@@ -74,8 +85,8 @@
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
 		pdfkeywords={IA}{chuva}{equação}, %Palavras chave do TCC
-		colorlinks=true,       		      % Links coloridos
-    	linkcolor=blue,          	      % Links na cor azul (definido na linha 55)
+		colorlinks=false,       		      % Links coloridos
+    	linkcolor=blue,          	      % Links definido na linha 55
     	citecolor=blue,        		      % Citações na cor azul
     	filecolor=magenta,                % color of file links
 		urlcolor=blue,
@@ -93,6 +104,28 @@
 %Compila o sumário
 \makeindex
 
+\makepagestyle{meuestilo}
+  %%cabeçalhos
+  \makeevenhead{meuestilo} %%pagina par
+     {}
+     {}
+     {\thepage}
+  \makeoddhead{meuestilo} %%pagina ímpar ou com oneside
+     {}
+     {}
+     {\thepage}
+  \makeheadrule{meuestilo}{}{} %linha
+  %% rodapé
+  \makeevenfoot{meuestilo}
+     {} %%pagina par
+     {}
+     {} 
+  \makeoddfoot{meuestilo} %%pagina ímpar ou com oneside
+     {}
+     {}
+     {}
+     
+
 \begin{document}
 
 %Configurações gerais
@@ -101,8 +134,8 @@
 
 %Elementos pré-textuais do TCC
 \input{Pre-Textuais/Capa.tex} %Inclui a capa do trabalho
-\input{Pre-Textuais/Folha-de-Rosto.tex} %Inclui a folha de rosto
-\input{Pre-Textuais/Ficha-Catalografica.tex} %Inclui ficha catalográfica
+%\input{Pre-Textuais/Folha-de-Rosto.tex} %Inclui a folha de rosto
+%\input{Pre-Textuais/Ficha-Catalografica.tex} %Inclui ficha catalográfica
 %\input{Pre-Textuais/Errata.tex} %Insere errata
 \input{Pre-Textuais/Folha-de-Aprovacao.tex} %Folha de aprovação
 \input{Pre-Textuais/Dedicatoria.tex} %Dedicatória
@@ -111,10 +144,12 @@
 \input{Pre-Textuais/Resumos.tex} %Insere os resumos
 \input{Pre-Textuais/Lista-Ilustracoes.tex} %ilustrações
 \input{Pre-Textuais/Lista-Tabelas.tex} %lista de tabelas
+\input{Pre-Textuais/Lista-Equacoes.tex} %lista de equações
 \input{Pre-Textuais/Abreviaturas.tex} %insere lista de abreviaturas
 \input{Pre-Textuais/Simbolos.tex} %Lista de símbolos
 \input{Pre-Textuais/Sumario.tex} %Insere o sumário
 
+\pagestyle{meuestilo}
 %Elementos textuais
 \input{Textuais/Introducao.tex}
 \input{Textuais/Objetivos.tex}
@@ -126,7 +161,7 @@
 %Elementos pós-textuais
 \input{Pos-Textual/Bibliografia.tex}
 %\input{Pos-Textual/Glossario.tex}
-%\input{Pos-Textual/Apendice.tex}
+\input{Pos-Textual/Apendice.tex}
 %\input{Pos-Textual/Anexo.tex}
 %\input{Pos-Textual/Indice-Remissivo.tex}
 

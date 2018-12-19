@@ -1,20 +1,21 @@
 \section{Desagregação de chuvas}
 
-O método de desagregação de chuvas trata-se de uma metodologia com vantagem de uso simples, fornecendo resultados satisfatórios e com boa similaridade para locais distintos, além de permitir uma validade para regiões próximas onde não há medição. \cite{praticas-hidrologicas} desenvolveu a metodologia das isozonas, que pode ser aplicada em todo o território nacional. Dentro dos métodos mais utilizados, destacam-se os trabalhos de \citeonline{chuva-diaria} e \citeonline{idf-rs}, onde foi utilizado séries de chuvas sintéticas para estimar as correlações de intensidade-duração-frequência, porém a metodologia mais utilizada está naquela que correlaciona a duração de chuvas com maiores durações para chuvas intensas de durações inferiores.
+O método de desagregação de chuvas trata-se de uma metodologia com vantagem de uso simples, fornecendo resultados satisfatórios e com boa similaridade para locais distintos, além de permitir uma validade para regiões próximas onde não há medição. \citeonline{praticas-hidrologicas} desenvolveu a metodologia das isozonas, que pode ser aplicada em todo o território nacional. Dentro dos métodos mais utilizados, destacam-se os trabalhos de \citeonline{chuva-diaria} e \citeonline{idf-rs}, nos quais foram utilizadas séries de chuvas sintéticas para estimar as correlações de intensidade-duração-frequência, porém a metodologia mais utilizada é aquela que correlaciona a duração de chuvas com maiores durações para chuvas intensas de durações inferiores.
 
 O método das isozonas foi comparado, pelos órgãos responsáveis pelas rodovias do Estado de Goiás e Departamento Nacional de Estradas e Rodagem, com as equações de chuvas intensas e encontraram desvios entre 7,0 e 55\%, sendo recomendada a busca por outra metodologia de cálculo \cite{isozonas}.
 
-O método de desagregação de chuvas pode ser encontrado na literatura diversas metodologias para obter durações de chuvas intensas de menores durações a partir de uma chuva de maior duração.
+%explicar melhor esse parágrafo
+Quanto ao método de desagregação de chuvas, podem ser encontradas na literatura diversas metodologias para obter durações de chuvas intensas de menores durações a partir de uma chuva de maior duração. Basicamente o método consiste em adotar um intervalo de maior precipitação em uma chuva de maior duração como a intensidade máxima para uma chuva de menor duração. A Figura \ref{fig:desagregacao} mostra como uma chuva de maior duração pode ser utilizada para estimar a máxima precipitação para chuvas de duração inferiores as coletadas.
 
 \begin{figure}[h]
-    \caption{Representação da metologia de desagregação das chuvas}
+    \caption{Representação da metodologia de desagregação das chuvas}
     \centering
     \includegraphics[width=0.7\textwidth]{Textuais/Figuras/desagregacao.pdf}
     \fonte{Autores}
     \label{fig:desagregacao}
 \end{figure}
 
-\subsection{Damé (2001)}
+\subsection{Método de Damé (2001)}
 
 Para \citeonline{dame01} foram utilizados os parâmetros do modelo Bartlett-Lewis do Pulso Retangular Modificado (BLPRM) \cite{iturbe} e, como consequência, as séries de chuvas na duração de 15 minutos foram separadas de uma chuva com duração de 24 horas e implementadas no modelo de desagregação proposto por \citeonline{point-process}.
 
@@ -22,9 +23,9 @@ O modelo BLPRM considera como hipótese que a precipitação tenha estacionalida
 
 Assumindo de que o método das relações foi eficaz na separação de chuvas diárias e que forneceu resultados próximos aos que seriam obtidos por meio do uso de plataforma de coleta de dados, verificou-se o desempenho das estimativas dos valores de intensidades máximas, quando se utiliza o método das relações para desagregar a chuva diária e estimar as relações IDF e assim chegar a uma conclusão sobre o método das relações.
 
-\subsection{Bell (1969)}
+\subsection{Método de Bell (1969)}
 
-De acordo com \citeonline{bell} estabeleceu relações experimentais entre chuvas com diferentes durações fundamentado em informações de séries fracionais de chuva observada nos EUA, Austrália, URSS, Porto Rico, Alasca, África do Sul e Havaí. O fundamento teórico desse estudo é a existência de similaridade entre a formação de chuvas. Devido a propriedades semelhantes em muitas partes do mundo devido a características de chuvas convectivas,  utiliza-se a equação de Bell para estimar a chuvas máximas entre os limites especificados. Devido a esse estudo ter sido realizado em diversas partes do mundo o trabalho de Bell apresenta algumas limitações. Devido aos valores adotados serem de várias regiões do mundo esses valores representam valores médios e não específicos de uma região; um outra limitação está na durações das chuvas, que devem estar entre 5 minutos e 120 minutos; pode- se, também destacar, como limitação ao método de Bell, a obrigatoriedade de se conhecer a precipitação máxima com duração de 60 minutos e intervalo de retorno de 10 anos, sendo necessário a coleta de dados por meio de pluviógrafos.
+\citeonline{bell} estabeleceu relações experimentais entre chuvas com diferentes durações fundamentado em informações de séries fracionais de chuva observada nos EUA, Austrália, URSS, Porto Rico, Alasca, África do Sul e Havaí. O fundamento teórico desse estudo é a existência de similaridade entre a formação de chuvas. Devido a propriedades semelhantes em muitas partes do mundo, devido a características de chuvas convectivas,  utiliza-se a equação de Bell para estimar a chuvas máximas entre os limites especificados. Devido aos valores adotados serem de várias regiões do mundo esses valores representam valores médios e não específicos de uma região; outra limitação está na durações das chuvas, que devem estar entre 5 minutos e 120 minutos; pode-se, também destacar, como limitação ao método de Bell, a obrigatoriedade de se conhecer a precipitação máxima com duração de 60 minutos e intervalo de retorno de 10 anos, sendo necessária a coleta de dados por meio de pluviógrafos.
 
 \citeonline{bell} utilizou dados de vários continentes e ajustou a Equação \ref{eq:bell}.
 
@@ -44,7 +45,7 @@ t = Tempo de duração [min]
 $P_{(1,10)}$ = Altura de chuva com 1 hora de duração e período de retorno de 10 anos
 
 
-\subsection{Chen (1983)}
+\subsection{Método de Chen (1983)}
 
 \citeonline{rainfall} desenvolveu uma equação de IDF de chuvas que utiliza três alturas de precipitação: chuva de duração de 1 hora e tempo de retorno de 10 anos, chuva de 24 horas de duração e 10 anos de período de retorno e a chuva de 24 horas de duração e 100 anos de período de retorno. Neste estudo foi verificado que a partir da duração de 2 horas as relações de duração em relação a chuva de 24 horas variaram em função da relação da chuva de 1 hora e a de 24 horas.
 
