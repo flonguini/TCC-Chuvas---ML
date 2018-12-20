@@ -16,6 +16,7 @@
     subsection = title, 
     %Altera para maiúscula as fontes das sub-subseções
     subsubsection = title,  
+    sumario=abnt-6027-2012,
     %Idiomas para hifenização
     engish,
     brazil %Último idioma é a língua do documento
@@ -24,7 +25,7 @@
 
 %Pacotes utilizados em citações
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na referência
-\usepackage[alf]{abntex2cite}	                 % Citações padrão ABNT
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	                 % Citações padrão ABNT
 \usepackage{titlesec}
 %Inclusão de pacotes básicos
 \usepackage{times}
@@ -41,6 +42,8 @@
 \usepackage{minted}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{pdfpages}
+
 
 %formatação dos capítulos, seções e subseções
 \titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{12pt}{\MakeUppercase}{\large}\titlespacing*{\chapter}{0pt}{10pt}{15pt}
@@ -48,6 +51,24 @@
 \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{12pt}{}
 \titleformat{\subsubsection}{\normalfont\normalsize}{\thesubsubsection}{12pt}{}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CONFIGURACAO DO SUMARIO
+% -----------------------------------------------------------------------------
+
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforechapterskip}{\onelineskip}
+
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\cftsectionfont}{} 
+\renewcommand{\cftsubsectionfont}{\bfseries}
+\renewcommand{\cftsubsubsectionfont}{}
+\renewcommand{\cftparagraphfont}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
@@ -63,14 +84,18 @@
 		Citado #1 vezes nas páginas #2.%
 	\fi}
 
+
+
 %Informações do documento
 
 \titulo{Ferramenta computacional para aproximação dinâmica da equação de chuva intensa por meio de redes neurais artificiais}
 \autor{Erick Hardt \\ Fernando Longuini da Silva \\ João Pedro Lang Ramalho \\ Matheus Swerts Neder Miranda}
-\local{Brasil}
+\local{São Caetano do Sul}
 \data{2018}
 \orientador{Pedro Henrique Cerento de Lyra}
 \coorientador{Carlos Alberto de Moya Figueira Netto}
+
+
 
 \definecolor{blue}{RGB}{41,5,195} %Define a cor azul do texto
 
@@ -95,6 +120,24 @@
 
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CONFIGURACAO DO SUMARIO
+% -----------------------------------------------------------------------------
+
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforechapterskip}{\onelineskip}
+
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\cftsectionfont}{} 
+\renewcommand{\cftsubsectionfont}{\bfseries}
+\renewcommand{\cftsubsubsectionfont}{}
+\renewcommand{\cftparagraphfont}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm}
 
@@ -104,27 +147,6 @@
 %Compila o sumário
 \makeindex
 
-\makepagestyle{meuestilo}
-  %%cabeçalhos
-  \makeevenhead{meuestilo} %%pagina par
-     {}
-     {}
-     {\thepage}
-  \makeoddhead{meuestilo} %%pagina ímpar ou com oneside
-     {}
-     {}
-     {\thepage}
-  \makeheadrule{meuestilo}{}{} %linha
-  %% rodapé
-  \makeevenfoot{meuestilo}
-     {} %%pagina par
-     {}
-     {} 
-  \makeoddfoot{meuestilo} %%pagina ímpar ou com oneside
-     {}
-     {}
-     {}
-     
 
 \begin{document}
 
@@ -134,11 +156,11 @@
 
 %Elementos pré-textuais do TCC
 \input{Pre-Textuais/Capa.tex} %Inclui a capa do trabalho
-%\input{Pre-Textuais/Folha-de-Rosto.tex} %Inclui a folha de rosto
-%\input{Pre-Textuais/Ficha-Catalografica.tex} %Inclui ficha catalográfica
+\input{Pre-Textuais/Folha-de-Rosto.tex} %Inclui a folha de rosto
+\input{Pre-Textuais/Ficha-Catalografica.tex} %Inclui ficha catalográfica
 %\input{Pre-Textuais/Errata.tex} %Insere errata
-\input{Pre-Textuais/Folha-de-Aprovacao.tex} %Folha de aprovação
-\input{Pre-Textuais/Dedicatoria.tex} %Dedicatória
+%\input{Pre-Textuais/Folha-de-Aprovacao.tex} %Folha de aprovação
+%\input{Pre-Textuais/Dedicatoria.tex} %Dedicatória
 \input{Pre-Textuais/Agradecimentos.tex} %Inclui agradecimentos
 \input{Pre-Textuais/Epigrafe.tex} %Inclui a epígrafe
 \input{Pre-Textuais/Resumos.tex} %Insere os resumos
@@ -149,7 +171,6 @@
 \input{Pre-Textuais/Simbolos.tex} %Lista de símbolos
 \input{Pre-Textuais/Sumario.tex} %Insere o sumário
 
-\pagestyle{meuestilo}
 %Elementos textuais
 \input{Textuais/Introducao.tex}
 \input{Textuais/Objetivos.tex}

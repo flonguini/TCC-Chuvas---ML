@@ -1,25 +1,26 @@
 \chapter{Conclusão}
 
-Este trabalho teve como premissa propor uma ferramenta computacional para generalizar as equações de chuvas intensas utilizando como base uma técnica pouco explorada na área de hidrologia, inteligência artificial e redes neurais artificiais recorrentes.
+Este trabalho apresentou uma proposta de rede neural artificial recorrente que consegue produzir as curvas de intensidade-duração-frequência para durações entre 5 e 1080 minutos, gerando as curvas para os períodos de retorno de 2, 3, 5, 15, 20, 25, 50 e 100 anos para a cidade de Recife. A série histórica utilizou dados coletados entre os anos 2003 e 2011, pois não apresentavam falhas nas medições. A distribuição de probabilidade de Gumbel mostrou-se representativa para distribuição empírica de probabilidade de eventos extremos para a região escolhida nesse trabalho, comprovada pela aplicação e aprovação no teste estatístico de Kolmogorov-Smirnov a níveis de significância de 1\% e 20\%.
 
-A ideia é que um algorítimo de rede recorrente tem uma capacidade de generalização muito grande, criando a possibilidade de implementar um único algoritmo que pudesse ``entender`` o comportamento de chuvas de uma região e transformá-lo em uma equação que melhor represente as características intrínsecas da microrregião, considerando sempre que possível os impactos das mudanças climáticas e geomorfológicas.
+Foi desenvolvido em Matlab a arquitetura da rede neural recorrente utilizando funções de ativação do tipo tangente hiperbólica e algoritmo de Levenberg–Marquardt como método de otimização. Como parâmetro de entrada utilizou-se as durações, e valores de saída as intensidades geradas pela distribuição de probabilidade de Gumbel. Para avaliar a capacidade de aprendizado da rede analisaram-se as saídas para redes compostas por 1, 2, 5 e 10 neurônios de ativação. As seguintes conclusões podem ser destacadas:
 
-Para validar esta hipótese foi analisado uma série histórica da cidade de Recife, entre os anos de 2003 e 2011, determinando os parâmetros da equação de Mendes-Ramos, em seguida, foram avaliadas as arquiteturas das redes neurais artificiais que melhor se aproximam das intensidades máximas para cada período de retorno com durações entre 5 minutos e 1080 minutos.
-
-Pode-se observar que, em geral, o modelo proposto nesse trabalho tem resultados melhores do que o modelo estatístico proposto na literatura. Os resultados podem ser considerados promissores e provou-se capaz de representar com qualidade a cidade de Recife. Quando se compara com outros métodos mais tradicionais, pode-se concluir que houve um ganho considerável em termos de acurácia, fazendo com que o dimensionamento de obras hidráulicas tornem-se mais econômicas e fiéis a região.
+\begin{itemize}
+    \item A rede neural artificial apresentou coeficientes de determinação entre 0,9789 e 0,9973 para os períodos de retorno entre 2 e 100 anos e durações entre 5 e 1080 minutos, mostrando-se eficiente no caso estudado nesse trabalho.
+    \item Os resultados que apresentaram maiores coeficientes de determinação foram para as arquiteturas com 10 neurônios artificiais, atingindo valores de até 0,9973 para o período de retorno de 5 anos.
+    \item Até o estudo desse trabalho, a utilização de redes neurais artificiais mostraram-se eficientes para determinação das curvas IDFs.
+    \item Pode-se concluir que o número de neurônios impactam no erro final, a medida em que são acrescentados mais neurônios o erro, ao término do aprendizado, é cada vez menor. As RNAs estudadas nesse trabalho, composta por 5 e 10 neurônios, já apresentam desvios inferiores a 0.2\% em comparação as curvas geradas pela Equação de Villela-Mattos (1975). O acréscimo de mais neurônios pode gerar apenas um acréscimo de processamento computacional desnecessário.
+\end{itemize}
 
 \section{Trabalhos futuros}
 
-O campo de estudos de redes neurais artificiais oferece uma infinidade de possibilidades de pesquisa. Desta maneira, esse trabalho pode ser estendido de diversas formas.
-
-No que se diz respeito a qualidade das previsões, problemas com rede neurais artificiais depende muito da qualidade dos dados de entrada. Dessa maneira, devido a grande falhas nas séries históricas do Brasil uma das possibilidades é trabalhar como a saída de dados irá se comportar com falhas na série histórica.
-
-Os bancos de dados sobre chuvas estão sempre recebendo dados novos de precipitações que ocorreram mais recentemente. Um estudo importante seria entender como as redes neurais podem se comportar a medida em que novos valores são inseridos, buscando identificar características, mudanças e padrões da região.
+Para dar prosseguimento ao trabalho aqui iniciado, são sugeridos os seguintes estudos futuros:
 
 \begin{enumerate}
-    \item Verificar se a rede neural consegue convergir quando as séries históricas estão com falhas.
-    \item Alterar os parâmetros da rede imputados no ``nntools`` para verificar se ocorre uma otimização.
+    \item Verificar se a rede neural consegue convergir quando as séries históricas contém falhas.
+    \item Alterar os parâmetros da rede imputados para verificar a ocorrência de uma possível otimização.
     \item Modificar o algoritmo de convergência para avaliar a forma como a rede irá convergir.
     \item Testar a rede com uma série histórica superior a 30 anos.
-    \item Verificar da rede neural para diferentes períodos de retorno. 
+    \item Verificar os resultados para diferentes períodos de retorno.
+    \item Criar uma nova arquitetura de rede com mais camadas ocultas e outras funções de ativação.
+    \item Verificar a capacidade de extrapolação da rede neural artificial.
 \end{enumerate}

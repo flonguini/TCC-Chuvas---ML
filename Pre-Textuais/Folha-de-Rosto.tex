@@ -1,1 +1,38 @@
+\renewcommand{\imprimirfolhaderosto}{
+    \centering
+    \ABNTEXchapterfont \MakeUppercase{\textbf{\imprimirautor}}
+    
+    \vspace*{\fill}\vspace*{\fill}
+    
+    \ABNTEXchapterfont \MakeUppercase{\textbf{\imprimirtitulo}}
+    
+    \vspace*{\fill}
+    
+    \normalfont
+    
+    \begin{flushright}{}{
+				\hspace{.45\textwidth}
+	
+				\begin{minipage}{.55\textwidth}
+					\SingleSpacing
+					\imprimirpreambulo
+					
+					\vspace*{.7cm}
+
+					{\imprimirorientadorRotulo~ Msc. \imprimirorientador\par}
+					Co-Orientador: Msc. {\imprimircoorientador}
+				\end{minipage}
+	
+				\vspace*{\fill}
+			}
+		\end{flushright}
+    
+    \vspace*{\fill}
+
+	\ABNTEXchapterfont \MakeUppercase{\textbf{\imprimirlocal}}
+	\par
+	\ABNTEXchapterfont \MakeUppercase{\textbf{\imprimirdata}}
+
+}
+\newpage
 \imprimirfolhaderosto

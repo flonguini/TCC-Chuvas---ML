@@ -1,6 +1,6 @@
 \chapter{Resultados e Discussão}
 
-Este capítulo apresenta os resultados dos parâmetros calculados para a Equação \ref{eq:equacao-geral}. Para isso, foi desenvolvido um código computacional, desenvolvido em Python 3.2, implementando a teoria apresentada nos capítulos anteriores. Também é apresentado o desempenho obtido pela arquitetura de rede neural artificial estudada. 
+Este capítulo apresenta os resultados dos parâmetros calculados para a Equação \ref{eq:equacao-geral}. Para isso, foi desenvolvido um código computacional, desenvolvido em Python 3.2, implementando a teoria apresentada nos capítulos anteriores. Também é apresentado o desempenho obtido pela arquitetura de rede neural artificial estudada e as curvas para cada período de retorno estudado, utilizando 1, 2, 5 e 10 neurônios.
 
 \section{Resultados para o modelo estatístico}
 
@@ -92,7 +92,7 @@ De posse dos coeficientes que melhor se ajustaram à distribuição escolhida é
 \begin{figure}[h]
     \caption{Curvas IDF ajustadas para a cidade de Recife}
     \centering
-    \includegraphics[width=0.8\textwidth]{Textuais/Figuras/curvas-idf-ajustadas.png}
+    \includegraphics[width=0.9\textwidth]{Textuais/Figuras/curvas-idf-ajustadas.png}
     \fonte{Autores}
     \label{fig:idf-ajustada}
 \end{figure}
@@ -100,9 +100,7 @@ De posse dos coeficientes que melhor se ajustaram à distribuição escolhida é
 %rede
 \section{Resultados para o modelo de inteligência artificial}
 
-As Figuras \ref{fig:tr2-1n} a \ref{fig:tr100-10n} ilustram as curvas ajustadas para cada período de retorno variando a quantidade de neurônios artificias de 1, 2, 5 e 10 neurônios. Pode-se observar, que a medida em que a quantidade de neurônios é incrementada a saída da rede neural está cada vez mais próxima das intensidades calculadas pela distribuição de Gumbel.
-
-A Tabela \ref{tab:resumo} mostra um resumo dos coeficientes de determinação para cada modelo desse trabalho. Pode-se observar que os valores encontrados pela rede neural estão muito mais próximos da realidade, obtendo uma equação que representa de uma forma mais exata a região de Recife.
+A Tabela \ref{tab:resumo} apresenta uma síntese dos coeficientes de determinação estudados nesse trabalho. Foram analisados os períodos de retorno entre 2 e 100 anos, com uma arquitetura de rede com 1, 2, 5 e 10 neurônios de ativação utilizando a função tangente hiperbólica como função de ativação.
 
 \begin{table}[h]
 \centering
@@ -120,309 +118,14 @@ Neurônios   & 2      & 5      & 10     & 15     & 20     & 25     & 50     & 10
 \fonte{Autores}
 \end{table}
 
-%TR 2
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 2 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr2-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr2-1n}
-\end{figure}
+\input{Textuais/Resultados/Periodo-de-Retorno2.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno3.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno5.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno10.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno15.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno20.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno25.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno50.tex}
+\input{Textuais/Resultados/Periodo-de-Retorno100.tex}
 
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 2 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr2-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr2-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 2 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr2-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr2-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 2 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr2-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr2-10n}
-\end{figure}
-%FIM TR 2
-
-%TR 3
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 3 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr3-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr3-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 3 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr3-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr3-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 3 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr3-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr3-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 3 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr3-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr3-10n}
-\end{figure}
-%FIM TR 3
-
-%TR 5
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 5 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr5-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr5-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 5 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr5-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr5-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 5 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr5-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr5-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 5 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr5-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr5-10n}
-\end{figure}
-%FIM TR 5
-
-%TR 10
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 10 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr10-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr10-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 10 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr10-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr10-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 10 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr10-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr10-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 10 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr10-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr10-10n}
-\end{figure}
-%FIM TR 10
-
-%TR 15
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 15 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr15-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr15-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 15 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr15-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr15-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 15 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr15-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr15-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 15 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr15-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr15-10n}
-\end{figure}
-%FIM TR 15
-
-%TR 20
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 20 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr20-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr20-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 20 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr20-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr20-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 20 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr20-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr20-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 20 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr20-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr20-10n}
-\end{figure}
-%FIM TR 20
-
-%TR 25
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 25 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr25-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr25-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 25 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr25-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr25-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 25 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr25-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr25-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 25 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr25-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr25-10n}
-\end{figure}
-%FIM TR 25
-
-%TR 50
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 50 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr50-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr50-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 50 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr50-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr50-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 50 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr50-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr50-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 50 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr50-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr50-10n}
-\end{figure}
-%FIM TR 50
-
-%TR 100
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 100 anos e 1 neurônio artificial}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr100-1neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr100-1n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 100 anos e 2 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr100-2neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr100-2n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 100 anos e 5 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr100-5neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr100-5n}
-\end{figure}
-
-\begin{figure}[h]
-    \caption{Curva ajustada para os dados para TR 100 anos e 10 neurônios artificiais}
-    \centering
-    \includegraphics[width=0.74\textwidth]{Textuais/Figuras/NN/tr100-10neuronio.png}
-    \fonte{Autores}
-    \label{fig:tr100-10n}
-\end{figure}
-%FIM TR 100
-
+\input{Textuais/Resultados/Discussoes.tex}
